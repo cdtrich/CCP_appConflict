@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>EUCD Cyber Conflict Portal</title>
+		<meta charset="UTF-8" />
+		<!-- ////////////////////////////////////////////////////// -->
+		<!-- Styles /////////////////////////////////////////////// -->
+		<!-- ////////////////////////////////////////////////////// -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link href="./src/styles.css" rel="stylesheet" />
+
+		<!-- ////////////////////////////////////////////////////// -->
+		<!-- libs ///////////////////////////////////////////////// -->
+		<!-- ////////////////////////////////////////////////////// -->
+		<!-- d3 -->
+		<script type="module" src="https://d3js.org/d3.v5.min.js"></script>
+		<script type="module" src="https://d3js.org/d3-fetch.v1.min.js"></script>
+		<!-- lodash -->
+		<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+		<!-- sheetjs -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/xlsx@0.16.7/dist/xlsx.min.js"></script> -->
+		<!-- <script lang="javascript" src="src/xlsx.full.min.js"></script> -->
+		<!-- mustache -->
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.0.1/mustache.min.js"
+			integrity="sha512-6AXIWogbKpsHvoZJrJtHpIYES4wP8czSj0zk7ZfwOYS8GWYFNSykwdfapt7yQc4ikZytemBu+QyVObzBHJMwYg=="
+			crossorigin="anonymous"
+		></script>
+	</head>
+
+	<body>
+		<!-- //////////////////////////////////////////////////// -->
+		<!-- overlaytooltip ///////////////////////////////////// -->
+		<!-- //////////////////////////////////////////////////// -->
+
+		<script>
+			function off() {
+				document.getElementById("overlay").style.display = "none";
+			}
+		</script>
+
+		<!-- Mustache template, rendered later to show the details of a feature -->
+		<script id="template" type="x-tmpl-mustache">
+			<table class="five columns">
+				<th><b>{{ name }} &ensp;</b></th>
+				<tr><td><b>Report date &ensp;</b>{{ reportLabel }}</td></tr>
+				<tr><td class="definition">Pretext</td></tr>
+				<tr><td><b>Dyad &ensp;&ensp;</b>{{ dyad }}</td></tr>
+				<tr><td><b>Dispute type &ensp;</b>{{ disputeType }}</td></tr>
+				<tr><td><b>Geopolitical setting &ensp;</b>{{ geopoliticalSetting }}</td></tr>
+				<tr><td class="definition">Parties</td></tr>
+				<tr><td><b>Attacker jurisdiction &ensp;</b>{{ attacker_jurisdiction }}</td></tr>
+				<tr><td><b>Target jurisdiction &ensp;</b>{{ target_jurisdiction }}</td></tr>
+				<tr><td><b>Target entity	&ensp;</b>{{ targetEntity }}</td></tr>
+				<tr><td><b>Nuclear capability	&ensp;</b>{{ attackNuclearCapability  }} ({{ attacker_jurisdiction }}) {{ targetNuclearCapability }} ({{ target_jurisdiction }})</td></tr>
+				<tr><td><b>Accountability index	&ensp;</b>{{ attackAccountabilityIndex  }} ({{ attacker_jurisdiction }}) {{ targetAccountabilityIndex }} ({{ target_jurisdiction }})</td></tr>
+				<tr><td><b>Foreign Direct Investment	&ensp;</b>{{ attackfdi  }} ({{ attacker_jurisdiction }}) {{ targetfdi }} ({{ target_jurisdiction }})</td></tr>
+				<tr><td><b>GDP rank	&ensp;</b>{{ attack_gdpRank  }} ({{ attacker_jurisdiction }}) {{ target_gdpRank }} ({{ target_jurisdiction }})</td></tr>
+				<tr><td class="definition">Activity</td></tr>
+				<tr><td><b>Initial access (MITRE ATT&CK	for Enterprise) &ensp;</b>{{ initialaccesEnterprise }}</td></tr>
+				<tr><td><b>Initial access (MITRE ATT&CK	for ICS) &ensp;</b>{{ initialaccesICS }}</td></tr>
+				<tr><td><b>Impact (MITRE ATT&CK for Enterprise) &ensp;</b>{{ impactEnterprise }}</td></tr>
+				<tr><td><b>Additional Impact (MITRE ATT&CK for Enterprise) &ensp;</b>{{ addImpactEnterprise }}</td></tr>
+				<tr><td><b>Impact (MITRE ATT&CK for ICS)	&ensp;</b>{{ impactICS }}</td></tr>
+				<tr><td class="definition">Effect</td></tr>
+				<tr><td><b>Infosec effect	&ensp;</b>{{ infosecEffect }}</td></tr>
+				<tr><td><b>Physical effect	&ensp;</b>{{ physicalEffect }}</td></tr>
+				<tr><td><b>Corporate downtime	&ensp;</b>{{ corporateDowntime }}</td></tr>
+				<tr><td><b>Estimated loss (USD million)	&ensp;</b>{{ estimatedLoss }}</td></tr>
+				<tr><td><b>Factsheet &ensp;</b><a href="{{ url }}" target="_blank">{{ name }}</a></td></tr>
+				<tr><td><p text-align="right">click to close</p></td></tr>
+			</table>
+			<!-- <a href="#" id="close-details" class="one column" onclick="hideDetails(); return false;">&#x274c;</a> -->
+		</script>
+
+		<!-- ////////////////////////////////////////////////////// -->
+		<!-- app ////////////////////////////////////////////////// -->
+		<!-- ////////////////////////////////////////////////////// -->
+
+		<div id="appTypes">
+			<div id="overlay" onclick="off()">
+				<div id="details" class="hidden row">Details container</div>
+			</div>
+		</div>
+		<div id="appGeneral">
+			<div id="overlay" onclick="off()">
+				<div id="details" class="hidden row">Details container</div>
+			</div>
+		</div>
+		<div id="appSectors">
+			<div id="overlay" onclick="off()">
+				<div id="details" class="hidden row">Details container</div>
+			</div>
+		</div>
+		<div id="appConflict">
+			<div id="overlay" onclick="off()">
+				<div id="details" class="hidden row">Details container</div>
+			</div>
+		</div>
+		<div id="appProcesses">
+			<div id="overlay" onclick="off()">
+				<div id="details" class="hidden row">Details container</div>
+			</div>
+		</div>
+	</body>
+	<!-- <script type="module" src="./0_types.js"></script> -->
+	<!-- <script type="module" src="./1_general.js"></script> -->
+	<!-- <script type="module" src="./2_sectors.js"></script> -->
+	<script type="module" src="./3_conflict.js"></script>
+	<!-- <script type="module" src="./6_processes.js"></script> -->
+</html>
