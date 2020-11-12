@@ -2,6 +2,8 @@
 //////////////////////////// libs /////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 
+const { result } = require("lodash");
+
 // import * as d3 from "d3";
 // import { easeBounceIn, easeCubic, easeExp, easePoly } from "d3";
 // import { csv } from "d3-fetch";
@@ -172,7 +174,22 @@ const createChart = async () => {
 			.map((d) => d[col])
 			.uniq()
 			.value();
-		// console.log(dataType);
+
+		const rs = [radius * 0.5, radius * 2, radius, radius * 1.5];
+
+		// const dataLeg = [{dataType, rs}];
+		var result = {};
+		// const dataLeg = dataType.forEach((d, i) => {return {type: result[d], r: rs[i]}});
+
+		const combineArrays = (first, second) => {
+			return first.reduce((acc, val, ind) => {
+				acc[val] = second[ind];
+				return acc;
+			}, {});
+		};
+
+		const dataLeg = combineArrays(dataType, rs);
+		console.log(dataLeg);
 
 		//////////////////////////// scales ///////////////////////////////////////
 
@@ -186,7 +203,7 @@ const createChart = async () => {
 		const sScale = d3
 			.scaleOrdinal()
 			.domain(dataType)
-			.range([radius * 0.5, radius * 2, radius, radius * 1.5]);
+			.range([radius * 1, radius * 2, radius * 1.33, radius * 1.66]);
 
 		var simulation = d3
 			.forceSimulation(data)
@@ -313,6 +330,7 @@ const createChart = async () => {
 				.append("circle")
 				.attr("cx", radius)
 				.attr("cy", radius)
+				// .attr("r", radius / 2)
 				.attr("r", radius / 2)
 				.style("fill", (d, i) => colorsType[i]);
 
