@@ -129,6 +129,10 @@ const createChart = async () => {
 			`translate(${dimensions.margin.left}px,${dimensions.margin.top}px)`
 		);
 
+		// template
+		var template = d3.select("#template").html();
+		Mustache.parse(template);
+
 		//////////////////////////// data /////////////////////////////////////////
 
 		// pretty dates
@@ -273,6 +277,9 @@ const createChart = async () => {
 				dots.transition().style("opacity", 1);
 			});
 
+			// overlay
+			dots.on("click", on);
+
 			///////////////////////////////////////////////////////////////////////////
 			//////////////////////////// details //////////////////////////////////////
 			///////////////////////////////////////////////////////////////////////////
@@ -322,7 +329,12 @@ const createChart = async () => {
 		//////////////////////////// details //////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////
 
-		function on(f) {}
+		function on(f) {
+			document.getElementById("overlay").style.display = "block";
+			var detailsHtml = Mustache.render(template, f);
+			d3.select("#overlay").html(detailsHtml);
+		}
+
 		dots(data);
 	};
 
