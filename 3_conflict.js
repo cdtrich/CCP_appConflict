@@ -199,7 +199,7 @@ const createChart = async () => {
 					.strength(1)
 			)
 			.force("y", d3.forceY(dimensions.boundedHeight).strength(0.05))
-			.force("collide", d3.forceCollide(radius * 3))
+			.force("collide", d3.forceCollide(radius * 2))
 			.stop();
 
 		for (var i = 0; i < 10; ++i) simulation.tick();
