@@ -55,6 +55,8 @@
 		<script id="template" type="x-tmpl-mustache">
 			<table class="five columns">
 				<th><b>{{ name }} &ensp;</b></th>
+				<tr><td><b><a href="{{ url }}" target="_blank">Factsheet</a></b></td></tr>
+				<tr><td><br></td></tr>
 				<tr><td><b>Report date &ensp;</b>{{ reportLabel }}</td></tr>
 				<tr><td class="definition">Pretext</td></tr>
 				<tr><td><b>Dyad &ensp;&ensp;</b>{{ dyad }}</td></tr>
@@ -79,7 +81,6 @@
 				<tr><td><b>Physical effect	&ensp;</b>{{ physicalEffect }}</td></tr>
 				<tr><td><b>Corporate downtime	&ensp;</b>{{ corporateDowntime }}</td></tr>
 				<tr><td><b>Estimated loss (USD million)	&ensp;</b>{{ estimatedLoss }}</td></tr>
-				<tr><td><b>Factsheet &ensp;</b><a href="{{ url }}" target="_blank">{{ name }}</a></td></tr>
 				<tr><td><p text-align="right">click to close</p></td></tr>
 			</table>
 			<!-- <a href="#" id="close-details" class="one column" onclick="hideDetails(); return false;">&#x274c;</a> -->
