@@ -1,3 +1,35 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@cdtrich 
+cdtrich
+/
+CCP_appGeneral
+1
+00
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+CCP_appGeneral/src/styles.css
+@cdtrich
+cdtrich font
+…
+Latest commit 2e7ab13 21 hours ago
+ History
+ 1 contributor
+234 lines (198 sloc)  4.32 KB
+  
 /* ///////////////////////////////////////////////// */
 /* general ///////////////////////////////////////// */
 /* ///////////////////////////////////////////////// */
@@ -131,7 +163,7 @@ table {
 
 td,
 th {
-	padding: 6px 9px;
+	padding: 6px 2px;
 	font-weight: normal;
 	text-align: left;
 }
@@ -146,18 +178,18 @@ th {
 }
 
 td {
-	font-size: 0.75em;
+	font-size: 0.9em;
 	color: #000;
 	padding-top: 0em;
 	padding-bottom: 0em;
 }
 
 .definition {
-	font-size: 0.75em;
+	font-size: 0.9em;
 	color: #aaa;
 	text-align: left;
 	border-bottom: 1px solid #eee;
-	padding-top: 1em;
+	padding-top: 0.5em;
 	padding-bottom: 0.1em;
 }
 
@@ -169,7 +201,6 @@ td {
 	color: black;
 	text-decoration: none; 
 }
-
 #close-details:hover {
 	color: #000;
 } */
@@ -232,3 +263,15 @@ label {
 	/* transform: translate(-50%, -50%); */
 	/* -ms-transform: translate(-50%, -50%); */
 }
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
