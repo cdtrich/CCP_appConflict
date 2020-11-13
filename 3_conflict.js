@@ -175,22 +175,6 @@ const createChart = async () => {
 			.uniq()
 			.value();
 
-		const rs = [radius * 0.5, radius * 2, radius, radius * 1.5];
-
-		// const dataLeg = [{dataType, rs}];
-		var result = {};
-		// const dataLeg = dataType.forEach((d, i) => {return {type: result[d], r: rs[i]}});
-
-		const combineArrays = (first, second) => {
-			return first.reduce((acc, val, ind) => {
-				acc[val] = second[ind];
-				return acc;
-			}, {});
-		};
-
-		const dataLeg = combineArrays(dataType, rs);
-		console.log(dataLeg);
-
 		//////////////////////////// scales ///////////////////////////////////////
 
 		const xScale = d3
