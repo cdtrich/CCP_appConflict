@@ -5,7 +5,6 @@ console.clear();
 ///////////////////////////////////////////////////////////////////////////
 
 const createChart = async () => {
-	// const url = "https://eucyberdirect.eu/wp-content/uploads/2020/11/cpi_cyber_operations_database_2020_version-1.0.csv";
 	const url = "./data/CPI_Cyber_Operations_Database_2020_Version 1.0.csv";
 
 	//////////////////////////// data /////////////////////////////////////////
@@ -53,16 +52,13 @@ const createChart = async () => {
 			url: d.url
 		};
 	});
-	// console.log(data);
 
 	//////////////////////////// accessors ////////////////////////////////////
 
 	const col = "military";
 	const xAccessor = (d) => d.startYear;
 	const cAccessor = (d) => d[col];
-	// const cAccessor = (d) => d.windSpeed;
 	const rAccessor = (d) => d[col];
-	// const oAccessor = (d) => d.temperatureMax;
 
 	//////////////////////////// Set up svg ///////////////////////////////////
 
@@ -83,8 +79,6 @@ const createChart = async () => {
 	const update = () => {
 		//////////////////////////// sizes ///////////////////////////////////
 		const el = document.getElementById("col");
-		// const size = 795;
-		// const size = d3.min([window.innerWidth * 0.99, window.innerHeight * 0.99]);
 		const size = el.clientWidth * 0.99;
 
 		let dimensions = {
@@ -140,7 +134,6 @@ const createChart = async () => {
 				default:
 			}
 		});
-		// console.log(data)
 
 		//////////////////////////// colors ///////////////////////////////////////
 
@@ -272,7 +265,6 @@ const createChart = async () => {
 
 			var dataL = 0;
 			var legendOffset = radius * 10;
-			// var legendOffset = (dimensions.boundedWidth - 100) / dataType.length;
 
 			var legend = selectOrCreate("g", "legend", bounds)
 				.attr("width", dimensions.boundedWidth)
